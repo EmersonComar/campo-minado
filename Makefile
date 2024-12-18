@@ -58,8 +58,6 @@ valgrind: $(TARGET)
 	@valgrind --leak-check=full 						\
 			  --show-leak-kinds=all 					\
 			  --track-origins=yes						\
-			  --num-callers=20							\
-			  --track-fds=yes							\
 			  --log-file=$(VAL)/valgrind_output.log		\
 			  $(TARGET)
 
