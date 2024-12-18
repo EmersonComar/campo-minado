@@ -1,0 +1,8 @@
+# Diretório
+bin/
+obj/
+val/
+
+# Arquivos
+*.o
+*.log
