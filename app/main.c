@@ -1,11 +1,23 @@
+/// @file main.c
+/// @brief Função principal do jogo Campo Minado
+/// @author Emerson
+/// @date 2024-12-19
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "campo_minado.h"
 
+/// @brief Define a quantidade de linhas do tabuleiro
 #define LIN 10
-#define COL 10
-#define QTD 5
 
+/// @brief Define a quantidade de colunas do tabuleiro
+#define COL 10
+
+/// @brief Define a quantidade de bombas no tabuleiro
+#define QTD 13
+
+/// @brief Função principal
+/// @details Função principal do jogo Campo Minado
 int main(void) {
     Campo **tabuleiro;
     Jogador jogador = {1, 0, 0};
