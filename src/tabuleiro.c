@@ -24,29 +24,29 @@ Campo **alocar_tabuleiro(int linha, int coluna){
     return tabuleiro;
 }
 
-void exibir_tabuleiro(Campo **tabuleiro, int linha, int coluna){
-    printf("\t");
-    for(int i=0; i<coluna; i++){
-        printf("%d ", i+1);
+void exibir_tabuleiro(Campo **tabuleiro, int linhas, int colunas){
+    printf(CYAN "\n    ");
+    for (int j = 0; j < colunas; j++) {
+        printf("%2d ", j + 1);
     }
     printf("\n");
 
-    for(int i=0; i<linha; i++){
-        printf("%d\t", i+1);
-        for(int j=0; j<coluna; j++){
-            if(tabuleiro[i][j].estado == FECHADO){
-                printf("~ ");
-            } else{
-                if(!tabuleiro[i][j].bomba){
-                    printf("%d ", tabuleiro[i][j].ao_redor);
-                } else{
-                    printf("X ");
+    for (int i = 0; i < linhas; i++) {
+        printf(CYAN " %2d " RESET, i + 1);
+        for (int j = 0; j < colunas; j++) {
+            if (tabuleiro[i][j].estado == ABERTO) {
+                if (tabuleiro[i][j].bomba) {
+                    printf(RED " X " RESET);
+                } else {
+                    printf(GREEN " %d " RESET, tabuleiro[i][j].ao_redor);
                 }
+            } else {
+                printf(" # ");
             }
         }
-
         printf("\n");
     }
+    printf("\n");
 }
 
 
@@ -80,4 +80,22 @@ void atualiza_local(Campo **tabuleiro, int linha, int coluna, int x, int y){
             }
         }
     }
+}
+
+int estado_aberto(Campo **tabuleiro, int linha, int coluna){
+    int count=0;
+    for(int i=0; i<linha; i++)
+        for(int j=0; j<coluna; j++)
+            if(tabuleiro[i][j].estado == ABERTO)
+                count++;
+
+    
+    return count;
+}
+
+void exibir_boas_vindas() {
+    printf(CYAN "=================================\n");
+    printf("       Bem-vindo ao Campo Minado!\n");
+    printf("   Abra todos os campos sem bombas\n");
+    printf("=================================\n" RESET);
 }
