@@ -3,7 +3,7 @@
 #include <time.h>
 #include "campo_minado.h"
 
-void distribuir_bombas(Campo **tabuleiro, int linha, int coluna, int quantidade){
+void distribuir_bombas(Campo **tabuleiro, int linha, int coluna, int quantidade, int jx, int jy){
     srand(time(NULL));
 
     printf("Validando coordenadas das bombas:\n");
@@ -12,6 +12,8 @@ void distribuir_bombas(Campo **tabuleiro, int linha, int coluna, int quantidade)
     while (i < quantidade){
         int x = (int) rand() % (linha);
         int y = (int) rand() % (coluna);
+
+        if(jx == x && jy == y) continue;
 
         if(!tabuleiro[x][y].bomba){
             tabuleiro[x][y].bomba = 1;
@@ -46,6 +48,16 @@ void atualizar_ao_redor(Campo **tabuleiro, int linha, int coluna){
                 }
             }
             tabuleiro[l][c].ao_redor = contagem;
+        }
+    }
+}
+
+void revelar_bombas(Campo **tabuleiro, int linha, int coluna){
+    for(int i=0; i<linha; i++){
+        for(int c=0; c<coluna; c++){
+            if(tabuleiro[i][c].bomba){
+                tabuleiro[i][c].estado = ABERTO;
+            }
         }
     }
 }

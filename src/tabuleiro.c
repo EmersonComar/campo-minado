@@ -18,7 +18,7 @@ Campo **alocar_tabuleiro(int linha, int coluna){
         for(int j=0; j<coluna; j++){
             tabuleiro[i][j].ao_redor = 0;
             tabuleiro[i][j].bomba = 0;
-            tabuleiro[i][j].estado = ABERTO;
+            tabuleiro[i][j].estado = FECHADO;
         }
     }
     return tabuleiro;
@@ -40,7 +40,7 @@ void exibir_tabuleiro(Campo **tabuleiro, int linha, int coluna){
                 if(!tabuleiro[i][j].bomba){
                     printf("%d ", tabuleiro[i][j].ao_redor);
                 } else{
-                    printf("  ");
+                    printf("X ");
                 }
             }
         }
@@ -57,4 +57,27 @@ void limpar_tabuleiro(Campo **tabuleiro, int coluna){
         free(tabuleiro[i]);
 
     free(tabuleiro);
+}
+
+void atualiza_local(Campo **tabuleiro, int linha, int coluna, int x, int y){
+
+    if(x < 0 || x >= linha || y < 0 || y >= coluna){
+        return;
+    }
+
+    if(tabuleiro[x][y].estado == ABERTO)
+        return;
+
+    tabuleiro[x][y].estado = ABERTO;
+
+    if(tabuleiro[x][y].ao_redor > 0)
+        return;
+
+    for (int dx = -1; dx <= 1; dx++) {
+        for (int dy = -1; dy <= 1; dy++) {
+            if (dx != 0 || dy != 0) { 
+                atualiza_local(tabuleiro, linha, coluna, x + dx, y + dy);
+            }
+        }
+    }
 }
