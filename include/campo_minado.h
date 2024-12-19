@@ -20,5 +20,9 @@ Campo **alocar_tabuleiro(int linha, int coluna);
 void exibir_tabuleiro(Campo **tabuleiro, int linha, int coluna);
 void limpar_tabuleiro(Campo **tabuleiro, int coluna);
 
+// Funções referentes às bombas
+void distribuir_bombas(Campo **tabuleiro, int linha, int coluna, int quantidade);
+void atualizar_ao_redor(Campo **tabuleiro, int linha, int coluna);
+
 
 #endif

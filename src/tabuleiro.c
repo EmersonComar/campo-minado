@@ -18,7 +18,7 @@ Campo **alocar_tabuleiro(int linha, int coluna){
         for(int j=0; j<coluna; j++){
             tabuleiro[i][j].ao_redor = 0;
             tabuleiro[i][j].bomba = 0;
-            tabuleiro[i][j].estado = FECHADO;
+            tabuleiro[i][j].estado = ABERTO;
         }
     }
     return tabuleiro;
@@ -37,7 +37,7 @@ void exibir_tabuleiro(Campo **tabuleiro, int linha, int coluna){
             if(tabuleiro[i][j].estado == FECHADO){
                 printf("~ ");
             } else{
-                if(tabuleiro[i][j].bomba){
+                if(!tabuleiro[i][j].bomba){
                     printf("%d ", tabuleiro[i][j].ao_redor);
                 } else{
                     printf("  ");

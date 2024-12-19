@@ -19,11 +19,13 @@ TARGET			= $(BIN)/main
 
 # Arquivos fontes
 SRCS			=	$(APP)/main.c		\
-					$(SRC)/tabuleiro.c
+					$(SRC)/tabuleiro.c	\
+					$(SRC)/bombas.c
 
 # Arquivos objetos
 OBJS			=	$(BIN)/main.o			\
-					$(OBJ)/tabuleiro.o
+					$(OBJ)/tabuleiro.o		\
+					$(OBJ)/bombas.o
 
 # Padrão
 all: $(BIN) $(OBJ) $(TARGET)
@@ -39,6 +41,10 @@ $(BIN)/main.o: $(APP)/main.c $(INCLUDE)/campo_minado.h
 	@$(CC) $(CFLAGS) $(INCLUDE_FLAG) -c $< -o $@
 
 $(OBJ)/tabuleiro.o: $(SRC)/tabuleiro.c $(INCLUDE)/campo_minado.h
+	@echo "Compilando $@"
+	@$(CC) $(CFLAGS) $(INCLUDE_FLAG) -c $< -o $@
+
+$(OBJ)/bombas.o: $(SRC)/bombas.c $(INCLUDE)/campo_minado.h
 	@echo "Compilando $@"
 	@$(CC) $(CFLAGS) $(INCLUDE_FLAG) -c $< -o $@
 
