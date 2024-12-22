@@ -59,7 +59,7 @@ run: $(TARGET)
 	@echo "Executando aplicativo"
 	@$(TARGET)
 
-valgrind: $(TARGET)
+valgrind: $(VAL) $(TARGET)
 	@echo "Analisando com valgrind"
 	@valgrind --leak-check=full 						\
 			  --show-leak-kinds=all 					\
