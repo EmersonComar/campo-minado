@@ -10,9 +10,6 @@
 
 void distribuir_bombas(Campo **tabuleiro, int linha, int coluna, int quantidade, int jx, int jy){
     srand(time(NULL));
-
-    printf("Validando coordenadas das bombas:\n");
-
     int i=0;
     while (i < quantidade){
         int x = (int) rand() % (linha);
