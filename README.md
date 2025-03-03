@@ -33,4 +33,4 @@ Se você deseja contribuir com o projeto, sinta-se à vontade para abrir issues 
 
 ## Licença
 
-Este projeto está licenciado sob a licença MIT.
+Este projeto está licenciado sob a licença GPLv3.
